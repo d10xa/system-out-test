@@ -11,7 +11,7 @@ public class StaticMethodArgsTest extends TestIO {
    }
 
    @Test
-   public void method_arguments_test() throws Exception {
+   public void method_arguments_test() {
       StaticMethodArgsTest.main("hello","world");
       assertOutput(">hello<",">world<");
    }

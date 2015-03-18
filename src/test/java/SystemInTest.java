@@ -14,21 +14,21 @@ public class SystemInTest extends TestIO {
    }
 
    @Test
-   public void inputStream_one_line() throws Exception {
+   public void inputStream_one_line(){
       setIn("hello\nworld");
       SystemInTest.main(null);
       assertOutput("hello","world");
    }
 
    @Test
-   public void inputStream_array() throws Exception {
+   public void inputStream_array(){
       setIn("hello","world");
       SystemInTest.main(new String[]{});
       assertOutput("hello","world");
    }
 
    @Test(expected = ComparisonFailure.class)
-   public void fail() throws Exception {
+   public void fail(){
       setIn("HELLO","WORLD");
       SystemInTest.main(new String[]{});
       assertOutput("hello","world");

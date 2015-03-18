@@ -40,12 +40,19 @@ public abstract class TestIO {
       System.setIn(toInputStream(sb.toString()));
    }
 
-   public void assertOutput(String... string) throws UnsupportedEncodingException {
+   public void assertOutput(String... string) {
       StringBuilder sb = new StringBuilder();
       for (String s : string) {
          sb.append(s).append("%n");
       }
-      Assert.assertEquals(String.format(sb.toString()),baos.toString("UTF-8"));
+      String expected = String.format(sb.toString());
+      String actual = null;
+      try {
+          actual = baos.toString("UTF-8");
+      } catch (UnsupportedEncodingException e) {
+          throw new RuntimeException(e);
+      }
+      Assert.assertEquals(expected, actual);
    }
 
    public InputStream toInputStream(String str){
